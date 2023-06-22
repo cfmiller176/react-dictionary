@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './WordForm.css';
 
 
-export default function WordForm() {
+const WordForm = ({addWord}) => {
+  const enRef = useRef(null);
+  const deRef = useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('form submitted');
-    const enField = document.querySelector('[name=en]');
-    const deField = document.querySelector('[name=de]');
-  }
+
+    const enField = enRef.current;
+    const deField = deRef.current;
 
     const enValue = enField.value;
     const deValue = deField.value;
@@ -16,7 +17,8 @@ export default function WordForm() {
     enField.value = '';
     deField.value = '';
 
-    alert(`${enValue}- ${deValue}`);
+    addWord(enValue, deValue);
+  }
 
   return (
     
@@ -26,13 +28,21 @@ export default function WordForm() {
       <div className="form-row">
         <label>
           English:
-          <input type='text' name = "en" placeholder="English"/>
+          <input 
+            type='text' 
+            name = "en" 
+            placeholder="English"
+            ref= {enRef} />
         </label>
       </div>
       <div className="form-row">
         <label>
           German:
-          <input type='text' name = "de" placeholder="German"/>
+          <input 
+            type='text' 
+            name = "de" 
+            placeholder="German"
+           ref = {deRef} />
         </label>
       </div>
       <div className="form-row">
@@ -44,3 +54,5 @@ export default function WordForm() {
   </section>
   )
 }
+
+export default WordForm;

@@ -3,10 +3,26 @@ import './WordForm.css';
 
 
 export default function WordForm() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('form submitted');
+    const enField = document.querySelector('[name=en]');
+    const deField = document.querySelector('[name=de]');
+  }
+
+    const enValue = enField.value;
+    const deValue = deField.value;
+
+    enField.value = '';
+    deField.value = '';
+
+    alert(`${enValue}- ${deValue}`);
+
   return (
+    
     <section className="card-form" >
     <h2>New Card</h2>
-    <form action ="#" method="GET" >
+    <form action ="#" method="GET" onSubmit={handleSubmit}>
       <div className="form-row">
         <label>
           English:

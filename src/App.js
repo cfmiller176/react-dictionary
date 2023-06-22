@@ -1,23 +1,33 @@
 import './App.css';
+import WordForm from './components/WordForm/WordForm';
+import CardsContainer from './components/CardsContainer/CardsContainer';
+import {useState} from 'react';
+
 
 function App() {
-  return (
+        const [words, setWords] = useState([
+      {front: 'translation', back: 'Übersetzung'},
+      {front: 'egg', back: 'Ei'},
+      {front: 'taxi' , back:'Taxi'},
+      {front: 'paper' , back:'Papier'},
+      {front: 'square' , back:'Platz' },
+     
+    ]);
+
+     return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        Dictionary App
+        </header>
+        <main>
+          <WordForm />
+          <CardsContainer words={words} />
+       
+         
+        </main>
     </div>
-  );
+  )
+  
 }
 
 export default App;
